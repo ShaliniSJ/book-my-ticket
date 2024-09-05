@@ -17,6 +17,7 @@ const SignUp = () => {
   })
 
   const [isSubmitting,setIsSubmitting]=useState(false);
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
 
   const submit= async () => {
     if (!form.username || !form.email || !form.password) {
@@ -28,7 +29,7 @@ const SignUp = () => {
      setIsLoggedIn(true);
 
 
-     router.replace('/explore')
+     router.replace('/home')
     }
     catch(e){
       Alert.alert('Error',e.message)

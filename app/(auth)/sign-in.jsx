@@ -14,6 +14,7 @@ const SignIn = () => {
     password: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {
@@ -24,7 +25,7 @@ const SignIn = () => {
       // Mock login functionality
       setIsLoggedIn(true);
       Alert.alert('Success', 'Logged in successfully');
-      router.replace('/explore');
+      router.replace('/home');
     } catch (e) {
       Alert.alert('Error', e.message);
     } finally {

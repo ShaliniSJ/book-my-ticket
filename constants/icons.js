@@ -13,7 +13,8 @@ import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 import heart_outline from "../assets/icons/heart_outline.png";
 import heart_coloured from "../assets/icons/heart_coloured.png";
-
+import trash from "../assets/icons/delete.png";
+import chats from "../assets/icons/chat.png";
 export default icons= {
   play,
   bookmark,
@@ -30,4 +31,6 @@ export default icons= {
   eye,
   heart_outline,
   heart_coloured,
+  trash,
+  chats
 };
