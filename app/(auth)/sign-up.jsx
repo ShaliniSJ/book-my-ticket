@@ -41,7 +41,7 @@ const SignUp = () => {
   return (
     <SafeAreaView className="flex-1">
     <LinearGradient
-      colors={['#F3CFC6', '#FFB6C1']}
+      colors={['#FF69B4', '#FFB6C1']}
       style={{ flex: 1 }}
     >
      <ScrollView contentContainerStyle="flex-grow justify-center px-4">
@@ -84,8 +84,8 @@ const SignUp = () => {
          isLoading={isSubmitting}
          />
          <View className="justify-center pt-5 flex-row gap-2">
-          <Text className="text-primary-light text-lg font-pregular">Have an account already?</Text>
-          <Link className="text-primary-dark text-lg font-psemibold" href="/sign-in">SignIn </Link>
+          <Text className="text-black text-lg font-pregular">Have an account already?</Text>
+          <Link className="text-primary text-lg font-psemibold" href="/sign-in">SignIn </Link>
          </View>
         </View>
       </ScrollView>
