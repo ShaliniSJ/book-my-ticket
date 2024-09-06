@@ -19,9 +19,9 @@ const SignIn = () => {
   const { t, i18n } = useTranslation(); // get i18n from useTranslation
   const [language, setLanguage] = useState("English");
 
-  const changeLanguage = async(language) => {
+  const changeLanguage = (language) => {
     console.log(language);
-    await i18n.changeLanguage(language.toLowerCase()); // change the language in i18n
+    i18n.changeLanguage(language); // change the language in i18n
     setLanguage(language);
     console.log("engine language",i18n.language);
   };
