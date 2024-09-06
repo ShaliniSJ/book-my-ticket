@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground  } from 'react-native';
 import icons  from '../../constants/icons';
+import {Picker} from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import images from '../../constants/images';
 
 const museumsData = [
   {
@@ -24,6 +26,7 @@ const museumsData = [
 const LandingPage = () => {
   const [bucketList, setBucketList] = useState([]);
   const navigation = useNavigation();
+  const [language, setLanguage] = useState('English');
 
   const addToBucketList = (museum) => {
     if (!bucketList.find((item) => item.id === museum.id)) {
@@ -38,8 +41,28 @@ const LandingPage = () => {
   return (
     <View className="flex-1">
     <ScrollView className="flex-1 bg-white">
+    <View className="flex-row justify-between items-center pt-2 px-4 mt-3 bg-white w-full h-20">
+        {/* Logo Image */}
+        <Image
+          source={images.logo8}
+          resizeMode="contain"
+          style={{ width: 120, height: 40 }}
+        />
+
+        {/* Language Switch Dropdown */}
+        <View className="border border-gray-300 rounded-lg bg-white">
+          <Picker
+            selectedValue={language}
+            style={{ height: 40, width: 100, }}
+            onValueChange={(itemValue) => setLanguage(itemValue)}
+          >
+            <Picker.Item label="English" value="English" />
+            <Picker.Item label="Tamil" value="Tamil" />
+            <Picker.Item label="Hindi" value="Hindi" />
+          </Picker>
+        </View>
+      </View>
       {/* User Info Section */}
-      <Image source={images.logo8} className="w-30 h-8 self-center mt-10" resizeMode='contain'/>
       <ImageBackground source={images.bg1} resizeMode="cover" style={{ flex: 1 }}>
       <View className="p-4 mb-4 w-full">
         <Text className="text-orange text-5xl font-bold">Welcome,</Text>
