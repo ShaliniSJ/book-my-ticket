@@ -21,7 +21,7 @@ module.exports = {
           background: '#FF0080', // Pink for gradient
         },
         fontFamily: {
-          italiana: ['Italiana-Regular'],
+          itRegular: ['Italiana-Regular',"sans-serif"],
         },
     },
   },

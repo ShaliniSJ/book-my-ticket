@@ -9,6 +9,9 @@ import logo5 from "../assets/images/logo5.png"
 import logo6 from "../assets/images/logo6.png"
 import logo7 from "../assets/images/logo7.jpg"
 import logo8 from "../assets/images/logo8.png"
+import bg1 from "../assets/images/bg1.jpg"
+import chatbot from "../assets/images/chatbot.jpg"
+import user_avatar from "../assets/images/user_avatar.png"
 
 export default images={
     front,
@@ -21,5 +24,8 @@ export default images={
     logo5,
     logo6,
     logo7,
-    logo8
+    logo8,
+    bg1,
+    chatbot,
+    user_avatar
 }

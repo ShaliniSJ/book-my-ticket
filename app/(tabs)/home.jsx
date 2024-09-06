@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground  } from 'react-native';
 import icons  from '../../constants/icons';
+import {Picker} from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import images from '../../constants/images';
 
 const museumsData = [
   {
@@ -24,6 +26,7 @@ const museumsData = [
 const LandingPage = () => {
   const [bucketList, setBucketList] = useState([]);
   const navigation = useNavigation();
+  const [language, setLanguage] = useState('English');
 
   const addToBucketList = (museum) => {
     if (!bucketList.find((item) => item.id === museum.id)) {
@@ -37,19 +40,40 @@ const LandingPage = () => {
 
   return (
     <View className="flex-1">
-    <ScrollView className="flex-1 bg-primary-muted p-4">
-      {/* User Info Section */}
-      <View className="bg-primary-light p-4 mb-4 mt-4 w-full">
-        <Text className="text-white text-xl font-bold">Welcome, User!</Text>
-        <Text className="text-white mt-2">Total Tickets: 3</Text>
-        <Text className="text-white">Pending Bookings: 1</Text>
-        <TouchableOpacity className="bg-primary-dark mt-4 py-2 rounded-lg">
-          <Text className="text-center text-white">Book Now</Text>
-        </TouchableOpacity>
+    <ScrollView className="flex-1 bg-white">
+    <View className="flex-row justify-between items-center pt-2 px-4 mt-3 bg-white w-full h-20">
+        {/* Logo Image */}
+        <Image
+          source={images.logo8}
+          resizeMode="contain"
+          style={{ width: 120, height: 40 }}
+        />
+
+        {/* Language Switch Dropdown */}
+        <View className="border border-gray-300 rounded-lg bg-white">
+          <Picker
+            selectedValue={language}
+            style={{ height: 40, width: 100, }}
+            onValueChange={(itemValue) => setLanguage(itemValue)}
+          >
+            <Picker.Item label="English" value="English" />
+            <Picker.Item label="Tamil" value="Tamil" />
+            <Picker.Item label="Hindi" value="Hindi" />
+          </Picker>
+        </View>
       </View>
+      {/* User Info Section */}
+      <ImageBackground source={images.bg1} resizeMode="cover" style={{ flex: 1 }}>
+      <View className="p-4 mb-4 w-full">
+        <Text className="text-orange text-5xl font-bold">Welcome,</Text>
+        <Text className="text-black text-5xl font-bold">User!</Text>
+        <Text className="text-black mt-2">Total Tickets: 3</Text>
+        <Text className="text-black">Pending Bookings: 1</Text>
+      </View>
+      </ImageBackground>
 
       {/* Nearby Museums */}
-      <View className="mb-4">
+      <View className="mb-4 mx-2">
         <Text className="text-black text-lg font-bold mb-2">Museums Near You</Text>
         {museumsData.map((museum) => (
           <View key={museum.id} className="bg-white p-4 mb-4 rounded-lg">
