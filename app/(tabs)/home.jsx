@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import icons  from '../../constants/icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -37,19 +37,20 @@ const LandingPage = () => {
 
   return (
     <View className="flex-1">
-    <ScrollView className="flex-1 bg-primary-muted p-4">
+    <ScrollView className="flex-1 bg-white">
       {/* User Info Section */}
-      <View className="bg-primary-light p-4 mb-4 mt-4 w-full">
-        <Text className="text-white text-xl font-bold">Welcome, User!</Text>
-        <Text className="text-white mt-2">Total Tickets: 3</Text>
-        <Text className="text-white">Pending Bookings: 1</Text>
-        <TouchableOpacity className="bg-primary-dark mt-4 py-2 rounded-lg">
-          <Text className="text-center text-white">Book Now</Text>
-        </TouchableOpacity>
+      <Image source={images.logo8} className="w-30 h-8 self-center mt-10" resizeMode='contain'/>
+      <ImageBackground source={images.bg1} resizeMode="cover" style={{ flex: 1 }}>
+      <View className="p-4 mb-4 w-full">
+        <Text className="text-orange text-5xl font-bold">Welcome,</Text>
+        <Text className="text-black text-5xl font-bold">User!</Text>
+        <Text className="text-black mt-2">Total Tickets: 3</Text>
+        <Text className="text-black">Pending Bookings: 1</Text>
       </View>
+      </ImageBackground>
 
       {/* Nearby Museums */}
-      <View className="mb-4">
+      <View className="mb-4 mx-2">
         <Text className="text-black text-lg font-bold mb-2">Museums Near You</Text>
         {museumsData.map((museum) => (
           <View key={museum.id} className="bg-white p-4 mb-4 rounded-lg">
