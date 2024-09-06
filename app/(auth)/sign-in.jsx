@@ -4,7 +4,7 @@ import { Link, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import images from '../../constants/images';
-
+import { useTranslation } from 'react-i18next';
 import CustomButton from '../../components/CustomButton';
 import FormField from '../../components/FormField';
 
@@ -15,6 +15,7 @@ const SignIn = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoggedIn,setIsLoggedIn]=useState(false);
+  const { t, i18n } = useTranslation();
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {
@@ -46,7 +47,7 @@ const SignIn = () => {
               resizeMode='contain'
             />
             <Text className="text-6xl text-orange font-bold text-left ml-2">
-              Welcome
+              {t("Welcome")}
             </Text>
             <Text className="text-6xl text-textPrimary font-bold text-left ml-2">
               Back !
