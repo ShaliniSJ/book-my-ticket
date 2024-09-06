@@ -34,20 +34,25 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1">
-      <LinearGradient
-        colors={['#FF69B4', '#FFB6C1']}
+    <SafeAreaView className="flex-1 bg-white">
+      {/* <LinearGradient
+        colors={['#f1e1c2', '#fcbc98']}
         style={{ flex: 1 }}
-      >
+      > */}
         <ScrollView contentContainerStyle="flex-grow justify-center px-4">
-          <View className="bg-white/30 p-6 mx-4 my-20 rounded-lg shadow-lg">
             <Image
-              source={images.logo1}
-              className="w-40 h-20 self-center mb-6"
+              source={images.logo8}
+              className="w-60 h-20 self-center"
               resizeMode='contain'
             />
-            <Text className="text-2xl text-black font-semibold text-center mb-6">
-              Log in
+            <Text className="text-6xl text-orange font-bold text-left ml-2">
+              Welcome
+            </Text>
+            <Text className="text-6xl text-textPrimary font-bold text-left ml-2">
+              Back !
+            </Text>
+            <Text className="text-xl font-regular text-left text-grey mt-2 mx-3">
+              Sign in now to manage your tickets and receive instant updates on all your museum visits
             </Text>
             <FormField
               title="Email"
@@ -66,15 +71,15 @@ const SignIn = () => {
               title="Sign In"
               handlePress={submit}
               containerStyles="mt-10 mx-3"
+              textStyles="text-white"
               isLoading={isSubmitting}
             />
             <View className="flex-row justify-center pt-5 gap-2">
               <Text className="text-black text-lg">Don't have an account?</Text>
-              <Link className="text-primary text-lg font-semibold" href="/sign-up">Sign Up</Link>
+              <Link className="text-primary text-lg text-orange font-semibold" href="/sign-up">Sign Up</Link>
             </View>
-          </View>
         </ScrollView>
-      </LinearGradient>
+      {/* </LinearGradient> */}
     </SafeAreaView>
   );
 };

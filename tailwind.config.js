@@ -16,9 +16,13 @@ module.exports = {
           secondary: '#5B0073', // Purple (secondary)
           white: '#FFFFFF',
           black:"#000000", // White for text
+          grey: '#9A9A9A', // Grey (for text)
+          orange: '#EA5141',
           background: '#FF0080', // Pink for gradient
         },
-
+        fontFamily: {
+          italiana: ['Italiana-Regular'],
+        },
     },
   },
   plugins: [],

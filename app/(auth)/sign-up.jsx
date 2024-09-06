@@ -40,34 +40,38 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1">
-    <LinearGradient
-      colors={['#FF69B4', '#FFB6C1']}
-      style={{ flex: 1 }}
-    >
+    <SafeAreaView className="flex-1 bg-white">
      <ScrollView contentContainerStyle="flex-grow justify-center px-4">
-     <View className="bg-white/30 p-6 mx-4 my-10 rounded-lg shadow-lg">
-            <Image
-              source={images.logo1}
-              className="w-40 h-20 self-center mb-6"
-              resizeMode='contain'
-            />
-            <Text className="text-2xl text-black font-semibold text-center mb-6">
-              Sign Up
-            </Text>
+          <Image
+            source={images.logo8}
+            className="w-60 h-20 self-center"
+            resizeMode='contain'
+          />
+
+          <Text className="text-6xl text-orange font-bold text-left ml-2">
+            Hello
+          </Text>
+
+          <Text className="text-6xl text-textPrimary font-bold text-left ml-2">
+            there !
+          </Text>
+
+          <Text className="text-xl font-regular text-left text-grey mt-2 mx-3">
+            Create an account to manage your tickets and receive instant updates on all your museum visits
+          </Text>
+
           <FormField
           title="User Name"
           value={form.username}
           handleChangeText={(e)=>setForm({...form,username:e})}
-          otherStyles="mt-10 ml-3 mr-3"
-          
+          otherStyles="mt-5 ml-3 mr-3"
           />
 
           <FormField
           title="Email"
           value={form.email}
           handleChangeText={(e)=>setForm({...form,email:e})}
-          otherStyles="mt-7 ml-3 mr-3"
+          otherStyles="mt-4 ml-3 mr-3"
           keyboardType="email-address"
           />
 
@@ -75,22 +79,21 @@ const SignUp = () => {
           title="Password"
           value={form.password}
           handleChangeText={(e)=>setForm({...form,password:e})}
-          otherStyles="mt-7 ml-3 mr-3"
+          otherStyles="mt-4 ml-3 mr-3"
          />
 
          <CustomButton
-         title="Sign Up"
-         handlePress={submit}
-         containerStyles="mt-10 ml-3 mr-3"
-         isLoading={isSubmitting}
+          title="Sign Up"
+          handlePress={submit}
+          containerStyles="mt-7 ml-3 mr-3"
+          textStyles="text-white"
+          isLoading={isSubmitting}
          />
          <View className="justify-center pt-5 flex-row gap-2">
           <Text className="text-black text-lg font-pregular">Have an account already?</Text>
-          <Link className="text-primary text-lg font-psemibold" href="/sign-in">SignIn </Link>
+          <Link className="text-primary text-lg font-semibold text-orange" href="/sign-in">Sign In </Link>
          </View>
-        </View>
       </ScrollView>
-      </LinearGradient>
     </SafeAreaView>
   )
 }
