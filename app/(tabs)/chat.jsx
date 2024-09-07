@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator, TextInput } from 'react-native';
 import images from "../../constants/images"
 import NavBar from '../navigation/NavBar';
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,7 @@ const ChatPage = () => {
   const [isLoading, setIsLoading] = useState(true); // To track the loading state
   
   const navigation = useNavigation();
+  const [inputValue, setInputValue] = useState(''); // State for text input value
 
   // Show loading screen for 2 seconds
   useEffect(() => {
@@ -30,6 +31,17 @@ const ChatPage = () => {
       { sender: 'system', text: `You selected: ${option}` }
     ]);
     setOptionsVisible(false); // Hide options after selecting one
+  };
+
+  // Handler for sending a text message
+  const handleSendMessage = () => {
+    if (inputValue.trim()) {
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { sender: 'user', text: inputValue }
+      ]);
+      setInputValue(''); // Clear input field
+    }
   };
 
   return (
@@ -56,34 +68,35 @@ const ChatPage = () => {
                 key={index}
                 className={`flex-row ${message.sender === 'user' ? 'justify-end' : 'justify-start'} my-2`}
               >
-                {/* Avatar */}
+                {/* Avatar and Message */}
                 {message.sender === 'system' && (
-                  <Image
-                    source={images.chatbot} // Replace with actual system avatar
-                    className="w-10 h-10 rounded-full mr-2"
-                  />
+                  <View className="flex-row">
+                    <Image
+                      source={images.chatbot} // Replace with actual system avatar
+                      className="w-10 h-10 rounded-full mr-2"
+                    />
+                    <View className="p-3 rounded-lg bg-gray-300">
+                      <Text className="text-black">{message.text}</Text>
+                    </View>
+                  </View>
                 )}
                 {message.sender === 'user' && (
-                  <Image
-                    source={images.user_avatar} // Replace with actual user avatar
-                    className="w-10 h-10 rounded-full ml-2"
-                  />
+                  <View className="flex-row">
+                    <View className="p-3 rounded-lg bg-blue-500">
+                      <Text className="text-white">{message.text}</Text>
+                    </View>
+                    <Image
+                      source={images.user_avatar} // Replace with actual user avatar
+                      className="w-10 h-10 rounded-full ml-2"
+                    />
+                  </View>
                 )}
-
-                {/* Message bubble */}
-                <View
-                  className={`p-3 rounded-lg ${message.sender === 'user' ? 'bg-blue-500' : 'bg-gray-300'}`}
-                >
-                  <Text className={message.sender === 'user' ? 'text-white' : 'text-black'}>
-                    {message.text}
-                  </Text>
-                </View>
               </View>
             ))}
           </ScrollView>
 
           {/* Options (shown only when they are visible) */}
-          {optionsVisible && (
+          {optionsVisible ? (
             <View className="mt-4 mx-4">
               <Text className="text-center text-lg mb-2">How can I help you?</Text>
               {['Museums near me', 'Book a ticket', 'Know about a museum', 'Popular attractions'].map(option => (
@@ -95,6 +108,24 @@ const ChatPage = () => {
                   <Text className="text-white text-center">{option}</Text>
                 </TouchableOpacity>
               ))}
+            </View>
+          ) : (
+            // Text Input box when options are not visible
+            <View className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-300">
+              <View className="flex-row">
+                <TextInput
+                  value={inputValue}
+                  onChangeText={setInputValue}
+                  placeholder="Type a message..."
+                  className="flex-1 p-2 border border-gray-300 rounded-lg"
+                />
+                <TouchableOpacity
+                  onPress={handleSendMessage}
+                  className="ml-2 p-2 bg-blue-500 rounded-lg justify-center items-center"
+                >
+                  <Text className="text-white">Send</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </>

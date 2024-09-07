@@ -3,6 +3,7 @@ import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity, Scroll
 import NavBar from '../navigation/NavBar';
 import images from '../../constants/images';
 import icons from '../../constants/icons';
+import { router } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 
 const ProfilePage = () => {
@@ -24,7 +25,7 @@ const ProfilePage = () => {
   };
 
   const handleLogout = () => {
-    navigation.navigate('signin');
+    router.replace('/(auth)/sign-in');
   };
 
   return (
@@ -75,16 +76,16 @@ const ProfilePage = () => {
             <View className="flex-row justify-between items-center w-full">
               <View className="flex-1">
                 <Text className="text-2xl font-medium">{name}</Text>
-                <Text className="text-lg text-gray-600 mb-2">{email}</Text>
-                <Text className="text-lg text-gray-600 mb-2">{phone}</Text>
-                <Text className="text-lg text-gray-600 mb-2">{address}</Text>
+                <Text className="text-lg text-gray-600">{email}</Text>
+                <Text className="text-lg text-gray-600">{phone}</Text>
+                <Text className="text-lg text-gray-600 mb-4">{address}</Text>
                 <TouchableOpacity onPress={handleEdit} className="bg-orange p-2 w-20 rounded-full">
                   <Text className="text-white text-center text-lg font-bold">Edit</Text>
                 </TouchableOpacity>
               </View>
               <Image
                 source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTMg_6SWkPbTM567j7I4njCqlpaeLCa9yQEA&s' }}
-                className="w-24 h-24 rounded-full ml-4"
+                className="w-24 h-24 rounded-full ml-4 mb-6"
               />
             </View>
           )}
@@ -92,7 +93,7 @@ const ProfilePage = () => {
 
         {/* Logout button */}
         <View className="items-center p-4">
-          <TouchableOpacity onPress={handleLogout} className="bg-red-600 p-3 rounded w-1/2">
+          <TouchableOpacity onPress={handleLogout} className="bg-red-600 p-3 rounded-xl w-1/2">
             <Text className="text-white text-center text-lg">Logout</Text>
           </TouchableOpacity>
         </View>
