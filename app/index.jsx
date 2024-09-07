@@ -21,7 +21,7 @@ export default function HomeScreen() {
           <View className="flex-1 m-2">
             <Image
               source={images.logo7} // Replace with your logo
-              style={{ width: 300, height: 40, alignSelf: 'center', marginBottom: 25, marginLeft: 11}}
+              style={{ width: 250, height: 40, alignSelf: 'center', marginBottom: 25, marginLeft: 11}}
             />
             {/* App Name Header */}
                  {/* Logo */}

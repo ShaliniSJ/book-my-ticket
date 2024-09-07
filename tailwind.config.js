@@ -16,13 +16,17 @@ module.exports = {
           secondary: '#5B0073', // Purple (secondary)
           white: '#FFFFFF',
           black:"#000000", // White for text
-          grey: '#9A9A9A', // Grey (for text)
+          grey: '#8C8C8C', // Grey (for text)
+          lgrey: '#C0C0C0', // Light grey (for background)
           orange: '#EA5141',
           background: '#FF0080', // Pink for gradient
         },
         fontFamily: {
           itRegular: ['Italiana-Regular',"sans-serif"],
         },
+        boxShadow: {
+          bottom: '0 10px 16px rgba(0, 0, 0, 0.5)', // Adjust values as needed
+        }
     },
   },
   plugins: [],

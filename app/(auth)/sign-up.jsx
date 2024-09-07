@@ -43,7 +43,7 @@ const SignUp = () => {
     <SafeAreaView className="flex-1 bg-white">
      <ScrollView contentContainerStyle="flex-grow justify-center px-4">
           <Image
-            source={images.logo8}
+            source={images.logo7}
             className="w-60 h-20 self-center"
             resizeMode='contain'
           />

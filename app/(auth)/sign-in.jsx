@@ -59,7 +59,7 @@ const SignIn = () => {
           </Picker>
         </View>
         <Image
-          source={images.logo8}
+          source={images.logo7}
           className="w-60 h-20 self-center"
           resizeMode="contain"
         />

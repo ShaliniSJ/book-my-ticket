@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
 import images from "../../constants/images"
+import NavBar from '../navigation/NavBar';
+import { useNavigation } from '@react-navigation/native';
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // To track the loading state
+  
+  const navigation = useNavigation();
 
   // Show loading screen for 2 seconds
   useEffect(() => {
@@ -29,21 +33,28 @@ const ChatPage = () => {
   };
 
   return (
-    <View className="flex-1 bg-white p-4">
+    <View className="flex-1 mt-8 bg-white">
       {isLoading ? (
         // Loading spinner (or loading text)
         <View className="flex-1 justify-center items-center">
-          <ActivityIndicator size="large" color="#0000ff" />
-          <Text className="mt-4 text-lg">Welcome To Book My Ticket</Text>
+          <Image source={images.logo7} resizeMode="contain" style={{ width: 300, height: 40 }}/>
+          <ActivityIndicator size="large" color="#000"/>
         </View>
-      ) : (
+        ) : (
         <>
+          {/* Header Section */}
+          <View className="bg-lgrey">
+            <TouchableOpacity className='flex-row' onPress={() => navigation.navigate('home')}>
+              <Image className='mt-2' source={images.arrow1} resizeMode="contain" style={{ width: 40, height: 30}}/> 
+              <Text className="text-black text-2xl font-bold ml-1 py-3">C<Text className='text-orange'>hatBot</Text></Text> 
+            </TouchableOpacity>
+          </View>
           {/* Chat messages */}
-          <ScrollView className="flex-1 mt-10">
+          <ScrollView className="flex-1 my-3 mx-2">
             {messages.map((message, index) => (
               <View
                 key={index}
-                className={`flex-row ${message.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}
+                className={`flex-row ${message.sender === 'user' ? 'justify-end' : 'justify-start'} my-2`}
               >
                 {/* Avatar */}
                 {message.sender === 'system' && (
@@ -73,7 +84,7 @@ const ChatPage = () => {
 
           {/* Options (shown only when they are visible) */}
           {optionsVisible && (
-            <View className="mt-4">
+            <View className="mt-4 mx-4">
               <Text className="text-center text-lg mb-2">How can I help you?</Text>
               {['Museums near me', 'Book a ticket', 'Know about a museum', 'Popular attractions'].map(option => (
                 <TouchableOpacity
@@ -88,6 +99,7 @@ const ChatPage = () => {
           )}
         </>
       )}
+      <NavBar/>
     </View>
   );
 };
