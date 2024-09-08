@@ -13,6 +13,14 @@ const museumsData = [
     description: 'A great place to learn about art and history...',
     category: 'Art',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s',
+    duration: '2-3 hours',
+    ticketPrice: {
+      adult: '₹200',
+      child: '₹100',
+    },
+    additionalAttractions: ['Folk Dance', '3D Shows', 'Puppet Show'],
+    openingTime: '09:00',
+    closingTime: '18:00',
   },
   {
     id: 2,
@@ -21,15 +29,29 @@ const museumsData = [
     description: 'Explore the history of science and innovation...',
     category: 'Science',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzX0hWhPrjhRRiJ72w8PelsiuvtCp0-RBJg&s',
+    duration: '3-4 hours',
+    ticketPrice: {
+      adult: '₹250',
+      child: '₹150',
+    },
+    additionalAttractions: ['Virtual Reality Experience', 'Science Workshops', 'Planetarium Shows'],
+    openingTime: '10:00',
+    closingTime: '17:00',
   },
-  // Add more dummy museums as needed
 ];
+
+const isMuseumOpen = (openingTime, closingTime) => {
+  const now = new Date();
+  const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+  return currentTime >= openingTime && currentTime <= closingTime;
+};
 
 const LandingPage = () => {
   const [bucketList, setBucketList] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMuseums, setFilteredMuseums] = useState(museumsData);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [expandedMuseumId, setExpandedMuseumId] = useState(null);
 
   const addToBucketList = (museum) => {
     if (!bucketList.find((item) => item.id === museum.id)) {
@@ -49,12 +71,10 @@ const LandingPage = () => {
   const filterMuseums = (category, query) => {
     let filtered = museumsData;
     
-    // Filter by category
     if (category !== 'All') {
       filtered = filtered.filter((museum) => museum.category === category);
     }
 
-    // Filter by search query
     if (query) {
       filtered = filtered.filter(
         (museum) =>
@@ -72,14 +92,16 @@ const LandingPage = () => {
     filterMuseums(category, searchQuery);
   };
 
+  const toggleMoreInfo = (id) => {
+    setExpandedMuseumId(expandedMuseumId === id ? null : id);
+  };
+
   return (
     <View className="flex-1">
       <View className='mt-8 items-center shadow-black shadow-lg bg-white'>
-        {/* Logo Image */}
         <Image source={images.logo7} resizeMode="contain" style={{ width: 180, height: 40, elevation: 15}}/>
       </View>
       <ScrollView className="flex-1 bg-white">
-        {/* Welcome Banner */}
         <ImageBackground source={images.vid1} resizeMode="cover" style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
             <View className="ml-3 w-full">
@@ -93,11 +115,9 @@ const LandingPage = () => {
           </View>
         </ImageBackground>
 
-        {/* Nearby Museums */}
         <View className="mb-4 mt-2">
-          <Text className="text-orange text-2xl font-bold mx-3 mb-2">E<Text className='text-black'>xplore Nearby !</Text></Text>
+          <Text className="text-orange text-2xl font-bold mx-3 mb-2">Explore Nearby !</Text>
 
-          {/* Horizontal Menu Bar */}
           <ScrollView
             className="mx-2 my-2"
             horizontal={true}
@@ -123,7 +143,6 @@ const LandingPage = () => {
           ))}
         </ScrollView>
 
-        {/* Search Bar */}
         <View className="flex-row items-center bg-gray-200 p-2 mx-2 mt-2 mb-4 rounded-3xl">
           <Icon name="search" className="text-grey text-sm mx-3" />
           <TextInput
@@ -133,23 +152,65 @@ const LandingPage = () => {
             onChangeText={handleSearch}
           />
         </View>
-          
-        <Text className="text-orange text-2xl font-bold mx-3 mb-2">P<Text className="text-black">opular Ones</Text></Text>
-        {filteredMuseums.map((museum) => (
-          <View key={museum.id} className="bg-white p-3 rounded-lg">
-            <Image source={{ uri: museum.image }} className="h-32 w-full rounded-lg mb-2" />
-            <Text className="text-black text-lg font-bold">{museum.name}</Text>
-            <Text className="text-black">{museum.location}</Text>
-            <Text className="text-black text-sm">{museum.description}</Text>
+      </View>
+
+      <Text className="text-orange text-2xl font-bold mx-3 mb-2">Popular Ones</Text>
+
+      {filteredMuseums.map((museum) => (
+        <View key={museum.id} className="bg-white p-3 rounded-lg mb-3">
+          <Image source={{ uri: museum.image }} className="h-32 w-full rounded-lg mb-2" />
+          <Text className="text-black text-lg font-bold">{museum.name}</Text>
+          <Text className="text-black">{museum.location}</Text>
+          <Text className="text-black text-sm">{museum.description}</Text>
+          <View className="flex-row justify-between">
             <TouchableOpacity
               onPress={() => addToBucketList(museum)}
-              className="bg-orange mt-2 py-2 rounded-full"
+              className="bg-orange mt-2 py-2 rounded-full flex-1 mr-2"
             >
               <Text className="text-center text-base font-bold text-white">Save to Bucket List</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => toggleMoreInfo(museum.id)}
+              className="bg-gray-500 mt-2 py-2 rounded-full flex-1"
+            >
+              <Text className="text-center text-base font-bold text-white">
+                {expandedMuseumId === museum.id ? 'Less Info' : 'More Info'}
+              </Text>
+            </TouchableOpacity>
           </View>
-        ))}
-      </View>
+
+          {expandedMuseumId === museum.id && (
+            <View className="mt-2 p-3 bg-gray-100 rounded-lg">
+              <View className="flex-row justify-between items-center">
+              <Text className="text-black text-base font-bold">Museum Timings: {museum.openingTime} - {museum.closingTime}</Text>
+                <TouchableOpacity className='rounded-lg'>
+                {isMuseumOpen(museum.openingTime, museum.closingTime) ? (
+                  <Text className="p-1 px-2 bg-green-600 text-white text-sm font-bold rounded-2xl">Open</Text>
+                ) : (
+                  <Text className="p-1 px-2 bg-red-600 text-white text-sm font-bold rounded-2xl">Closed</Text>
+                )}
+                </TouchableOpacity>
+              </View>
+              <Text className="text-black text-base font-bold">Visiting Duration: {museum.duration}</Text>
+              <Text className="text-black text-base font-bold">Ticket Price:</Text>
+              <Text className="text-black">Adult: {museum.ticketPrice.adult}</Text>
+              <Text className="text-black">Child: {museum.ticketPrice.child}</Text>
+              <View className="flex-row justify-between items-center">
+                <Text className="text-black font-bold text-base">Additional Attractions:</Text>
+                <TouchableOpacity className='items-center justify-center bg-orange rounded-lg w-32 h-6'>
+                  <Icon name='location-arrow' size={15}>
+                    <Text className="text-white text-sm font-bold"> Get Directions</Text>
+                  </Icon>
+                </TouchableOpacity>
+              </View>
+              {museum.additionalAttractions.map((attraction, index) => (
+                <Text key={index} className="text-black">- {attraction}</Text>
+              ))}
+            </View>
+          )}
+        </View>
+      ))}
 
       {/* Bucket List (Wishlist) */}
       <View className="px-4 mb-10 bg-white">
@@ -158,15 +219,13 @@ const LandingPage = () => {
           <Text className="text-grey text-sm">Your bucket list is empty.</Text>
         ) : (
           bucketList.map((museum) => (
-            <View key={museum.id} className="bg-white px-2 mb-4 mt-2 rounded-lg flex-row items-center">
-              <Image source={{ uri: museum.image }} className="h-16 w-16 rounded-lg mr-4" />
-              <View className="flex-1">
-                <Text className="text-black text-lg font-bold">{museum.name}</Text>
-                <Text className="text-black text-sm">{museum.description}</Text>
+            <View key={museum.id} className="bg-white px-2 mb-3">
+              <View className="flex-row justify-between items-center">
+                <Text className="text-black font-bold">{museum.name}</Text>
+                <TouchableOpacity onPress={() => removeFromBucketList(museum.id)}>
+                  <Icon name="trash" className="text-red" size={20} />
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={() => removeFromBucketList(museum.id)}>
-                <Image source={icons.trash} className="h-6 w-6" />
-              </TouchableOpacity>
             </View>
           ))
         )}
@@ -178,15 +237,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
-
-
-
-{/* Language Switch Dropdown */}
-{/* <View className="border border-gray-300 rounded-lg bg-white">
-<Picker selectedValue={language} style={{ height: 50, width: 150 }} onValueChange={(itemValue) => setLanguage(itemValue)}>
-  <Picker.Item label="English" value="English" />
-  <Picker.Item label="Tamil" value="Tamil" />
-  <Picker.Item label="Hindi" value="Hindi" />
-</Picker>
-</View> */}
