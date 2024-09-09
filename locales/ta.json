@@ -1,4 +1,12 @@
 {
-  "Welcome": "வண்ணகம்",
-  "hello": "Hello, {{name}}!"
+  "Welcome Back": "வணக்கம்",
+  "Welcome": "வணக்கம்",
+  "Sign in now to manage your tickets and receive instant updates on all your museum visits": "உங்கள் டிக்கெட்டுகளை நிர்வகிக்கவும், உங்கள் அருங்காட்சியக வருகைகள் பற்றிய உடனடி அறிவிப்புகளைப் பெறவும் இப்போதே உள்நுழையவும்",
+  "Sign In": "உள்நுழையவும்",
+  "Sign Out": "வெளியேறு",
+  "Email": "மின்னஞ்சல்",
+  "Password": "கடவுச்சொல்",
+  "Forgot Password?": "கடவுச்சொல் மறந்துவிட்டீர்களா?",
+  "Don't have an account?": "உங்களிடம் கணக்கு இல்லையா?",
+  "Sign Up": "பதிவு செய்ய"
 }

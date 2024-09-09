@@ -1,4 +1,12 @@
 {
-    "hello": "नमस्ते",
-    "world": "दुनिया"
-}
+    "Welcome Back": "वापसी पर स्वागत है",
+    "Welcome": "स्वागत है",
+    "Sign in now to manage your tickets and receive instant updates on all your museum visits": "अपने टिकट प्रबंधित करने और अपने सभी संग्रहालय दौरों पर त्वरित अपडेट प्राप्त करने के लिए अभी साइन इन करें",
+    "Sign In": "साइन इन करें",
+    "Sign Out": "साइन आउट करें",
+    "Email": "ईमेल",
+    "Password": "पासवर्ड",
+    "Forgot Password?": "क्या आप पासवर्ड भूल गए?",
+    "Don't have an account?": "क्या आपका खाता नहीं है?",
+    "Sign Up": "साइन अप करें"
+  }  

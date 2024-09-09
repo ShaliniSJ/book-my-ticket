@@ -48,6 +48,7 @@ const isMuseumOpen = (openingTime, closingTime) => {
 };
 
 const LandingPage = () => {
+  const {t, i18n} = useTranslation();
   const [bucketList, setBucketList] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMuseums, setFilteredMuseums] = useState(museumsData);
@@ -105,7 +106,7 @@ const LandingPage = () => {
         <ImageBackground source={images.vid1} resizeMode="cover" style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
             <View className="ml-3 w-full">
-              <Text className="text-orange text-4xl font-bold mt-5">Welcome,</Text>
+              <Text className="text-orange text-4xl font-bold mt-5">{t("Welcome")},</Text>
               <Text className="text-white text-6xl font-bold mt-1">Jennie!</Text>
               <View className="flex-row items-center mb-4 mt-6">
                 <Icon className="ml-1 text-orange" name="map-marker" size={20} />
