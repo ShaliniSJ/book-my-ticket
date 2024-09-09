@@ -4,41 +4,43 @@ import icons from '../../constants/icons';
 import images from '../../constants/images';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NavBar from '../navigation/NavBar';
+import museumsData from "../../constants/museum"
+import { useTranslation } from 'react-i18next';
 
-const museumsData = [
-  {
-    id: 1,
-    name: 'Museum A',
-    location: 'City A',
-    description: 'A great place to learn about art and history...',
-    category: 'Art',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s',
-    duration: '2-3 hours',
-    ticketPrice: {
-      adult: '₹200',
-      child: '₹100',
-    },
-    additionalAttractions: ['Folk Dance', '3D Shows', 'Puppet Show'],
-    openingTime: '09:00',
-    closingTime: '18:00',
-  },
-  {
-    id: 2,
-    name: 'Museum B',
-    location: 'City B',
-    description: 'Explore the history of science and innovation...',
-    category: 'Science',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzX0hWhPrjhRRiJ72w8PelsiuvtCp0-RBJg&s',
-    duration: '3-4 hours',
-    ticketPrice: {
-      adult: '₹250',
-      child: '₹150',
-    },
-    additionalAttractions: ['Virtual Reality Experience', 'Science Workshops', 'Planetarium Shows'],
-    openingTime: '10:00',
-    closingTime: '17:00',
-  },
-];
+// const museumsData = [
+//   {
+//     id: 1,
+//     name: 'Museum A',
+//     location: 'City A',
+//     description: 'A great place to learn about art and history...',
+//     category: 'Art',
+//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s',
+//     duration: '2-3 hours',
+//     ticketPrice: {
+//       adult: '₹200',
+//       child: '₹100',
+//     },
+//     additionalAttractions: ['Folk Dance', '3D Shows', 'Puppet Show'],
+//     openingTime: '09:00',
+//     closingTime: '18:00',
+//   },
+//   {
+//     id: 2,
+//     name: 'Museum B',
+//     location: 'City B',
+//     description: 'Explore the history of science and innovation...',
+//     category: 'Science',
+//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzX0hWhPrjhRRiJ72w8PelsiuvtCp0-RBJg&s',
+//     duration: '3-4 hours',
+//     ticketPrice: {
+//       adult: '₹250',
+//       child: '₹150',
+//     },
+//     additionalAttractions: ['Virtual Reality Experience', 'Science Workshops', 'Planetarium Shows'],
+//     openingTime: '10:00',
+//     closingTime: '17:00',
+//   },
+// ];
 
 const isMuseumOpen = (openingTime, closingTime) => {
   const now = new Date();
@@ -47,12 +49,12 @@ const isMuseumOpen = (openingTime, closingTime) => {
 };
 
 const LandingPage = () => {
+  const {t, i18n} = useTranslation();
   const [bucketList, setBucketList] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMuseums, setFilteredMuseums] = useState(museumsData);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [expandedMuseumId, setExpandedMuseumId] = useState(null);
-
   const addToBucketList = (museum) => {
     if (!bucketList.find((item) => item.id === museum.id)) {
       setBucketList([...bucketList, museum]);
@@ -105,7 +107,7 @@ const LandingPage = () => {
         <ImageBackground source={images.vid1}>
           <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
             <View className="ml-[2%] w-full">
-              <Text className="text-orange text-4xl font-bold mt-[4.5%]">Welcome,</Text>
+              <Text className="text-orange text-3xl font-bold mt-[4.5%]">{t("Welcome")},</Text>
               <Text className="text-white text-6xl font-bold mt-[0.5%]">Jennie!</Text>
               <View className="flex-row items-center gap-1 mb-[2.5%] mt-[2%]">
                 <Icon className="ml-[2%] text-orange" name="map-marker" size={20} />
