@@ -70,36 +70,35 @@ const SignIn = () => {
           Back !
         </Text> */}
         <Text className="text-xl font-regular text-left text-grey mt-2 mx-3">
-          Sign in now to manage your tickets and receive instant updates on all
-          your museum visits
+          {t("Sign in now to manage your tickets and receive instant updates on all your museum visits")}
         </Text>
         <FormField
-          title="Email"
+          title={t("Email")}
           value={form.email}
           handleChangeText={(e) => setForm({ ...form, email: e })}
           otherStyles="mt-7 mx-3"
           keyboardType="email-address"
         />
         <FormField
-          title="Password"
+          title={t("Password")}
           value={form.password}
           handleChangeText={(e) => setForm({ ...form, password: e })}
           otherStyles="mt-7 mx-3"
         />
         <CustomButton
-          title="Sign In"
+          title={t("Sign In")}
           handlePress={submit}
           containerStyles="mt-10 mx-3"
           textStyles="text-white"
           isLoading={isSubmitting}
         />
         <View className="flex-row justify-center pt-5 gap-2">
-          <Text className="text-black text-lg">Don't have an account?</Text>
+          <Text className="text-black text-lg">{t("Don't have an account?")}</Text>
           <Link
             className="text-primary text-lg text-orange font-semibold"
             href="/sign-up"
           >
-            Sign Up
+            {t("Sign Up")}
           </Link>
         </View>
       </ScrollView>
