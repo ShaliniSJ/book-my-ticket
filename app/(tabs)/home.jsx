@@ -5,6 +5,7 @@ import images from '../../constants/images';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NavBar from '../navigation/NavBar';
 import museumsData from "../../constants/museum"
+import { useTranslation } from 'react-i18next';
 
 // const museumsData = [
 //   {
