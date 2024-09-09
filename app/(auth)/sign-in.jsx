@@ -60,8 +60,8 @@ const SignIn = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <ScrollView contentContainerStyle="flex-grow justify-center px-4">
-        <View className="border border-gray-300 mx-2 mt-2 w-32 rounded-lg bg-white">
+      <ScrollView contentContainerStyle="flex-grow justify-center">
+        <View className="border border-gray-300 mx-2 mt-2 w-32  rounded-lg bg-white">
           <Picker selectedValue={language} style={{ height: 50, width: 125 }} onValueChange={(itemValue) => setLanguage(itemValue)}>
             <Picker.Item label="English" value="English" />
             <Picker.Item label="Tamil" value="Tamil" />
@@ -102,7 +102,7 @@ const SignIn = () => {
           textStyles="text-white"
           isLoading={isSubmitting}
         />
-        <View className="flex-row justify-center pt-5 gap-2">
+        <View className="flex-row justify-center py-5 gap-2">
           <Text className="text-black text-lg">Don't have an account?</Text>
           <Link
             className="text-primary text-lg text-orange font-semibold"
