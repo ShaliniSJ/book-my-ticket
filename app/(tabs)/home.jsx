@@ -4,42 +4,43 @@ import icons from '../../constants/icons';
 import images from '../../constants/images';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NavBar from '../navigation/NavBar';
+import museumsData from "../../constants/museum"
 import { useTranslation } from 'react-i18next';
 
-const museumsData = [
-  {
-    id: 1,
-    name: 'Museum A',
-    location: 'City A',
-    description: 'A great place to learn about art and history...',
-    category: 'Art',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s',
-    duration: '2-3 hours',
-    ticketPrice: {
-      adult: '₹200',
-      child: '₹100',
-    },
-    additionalAttractions: ['Folk Dance', '3D Shows', 'Puppet Show'],
-    openingTime: '09:00',
-    closingTime: '18:00',
-  },
-  {
-    id: 2,
-    name: 'Museum B',
-    location: 'City B',
-    description: 'Explore the history of science and innovation...',
-    category: 'Science',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzX0hWhPrjhRRiJ72w8PelsiuvtCp0-RBJg&s',
-    duration: '3-4 hours',
-    ticketPrice: {
-      adult: '₹250',
-      child: '₹150',
-    },
-    additionalAttractions: ['Virtual Reality Experience', 'Science Workshops', 'Planetarium Shows'],
-    openingTime: '10:00',
-    closingTime: '17:00',
-  },
-];
+// const museumsData = [
+//   {
+//     id: 1,
+//     name: 'Museum A',
+//     location: 'City A',
+//     description: 'A great place to learn about art and history...',
+//     category: 'Art',
+//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s',
+//     duration: '2-3 hours',
+//     ticketPrice: {
+//       adult: '₹200',
+//       child: '₹100',
+//     },
+//     additionalAttractions: ['Folk Dance', '3D Shows', 'Puppet Show'],
+//     openingTime: '09:00',
+//     closingTime: '18:00',
+//   },
+//   {
+//     id: 2,
+//     name: 'Museum B',
+//     location: 'City B',
+//     description: 'Explore the history of science and innovation...',
+//     category: 'Science',
+//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzX0hWhPrjhRRiJ72w8PelsiuvtCp0-RBJg&s',
+//     duration: '3-4 hours',
+//     ticketPrice: {
+//       adult: '₹250',
+//       child: '₹150',
+//     },
+//     additionalAttractions: ['Virtual Reality Experience', 'Science Workshops', 'Planetarium Shows'],
+//     openingTime: '10:00',
+//     closingTime: '17:00',
+//   },
+// ];
 
 const isMuseumOpen = (openingTime, closingTime) => {
   const now = new Date();
@@ -54,7 +55,6 @@ const LandingPage = () => {
   const [filteredMuseums, setFilteredMuseums] = useState(museumsData);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [expandedMuseumId, setExpandedMuseumId] = useState(null);
-
   const addToBucketList = (museum) => {
     if (!bucketList.find((item) => item.id === museum.id)) {
       setBucketList([...bucketList, museum]);
@@ -104,21 +104,21 @@ const LandingPage = () => {
         <Image source={images.logo7} resizeMode="contain" style={{ width: 180, height: 40, elevation: 15}}/>
       </View>
       <ScrollView className="flex-1 bg-white">
-        <ImageBackground source={images.vid1} resizeMode="cover" style={{ flex: 1 }}>
+        <ImageBackground source={images.vid1}>
           <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-            <View className="ml-3 w-full">
-              <Text className="text-orange text-4xl font-bold mt-5">{t("Welcome")},</Text>
-              <Text className="text-white text-6xl font-bold mt-1">Jennie!</Text>
-              <View className="flex-row items-center mb-4 mt-6">
-                <Icon className="ml-1 text-orange" name="map-marker" size={20} />
-                <Text className="font-bold text-lg text-white"> Chennai, TamilNadu</Text>
+            <View className="ml-[2%] w-full">
+              <Text className="text-orange text-3xl font-bold mt-[4.5%]">{t("Welcome")},</Text>
+              <Text className="text-white text-6xl font-bold mt-[0.5%]">Jennie!</Text>
+              <View className="flex-row items-center gap-1 mb-[2.5%] mt-[2%]">
+                <Icon className="ml-[2%] text-orange" name="map-marker" size={20} />
+                <Text className="font-bold text-lg text-white">Chennai, TamilNadu</Text>
               </View>
             </View>
           </View>
         </ImageBackground>
 
         <View className="mb-4 mt-2">
-          <Text className="text-orange text-2xl font-bold mx-3 mb-2">Explore Nearby !</Text>
+          <Text className="text-orange text-2xl font-bold mx-3 mb-2">Explore<Text className='text-black'> Nearby !</Text></Text>
 
           <ScrollView
             className="mx-2 my-2"
@@ -145,7 +145,7 @@ const LandingPage = () => {
           ))}
         </ScrollView>
 
-        <View className="flex-row items-center bg-gray-200 p-2 mx-2 mt-2 mb-4 rounded-3xl">
+        <View className="flex-row items-center bg-gray-200 p-2 mx-2 mt-2 rounded-3xl">
           <Icon name="search" className="text-grey text-sm mx-3" />
           <TextInput
             className="flex-1"
@@ -156,11 +156,11 @@ const LandingPage = () => {
         </View>
       </View>
 
-      <Text className="text-orange text-2xl font-bold mx-3 mb-2">Popular Ones</Text>
+      <Text className="text-orange text-2xl font-bold mx-3 mb-2">Popular<Text className='text-black'> Ones</Text></Text>
 
       {filteredMuseums.map((museum) => (
         <View key={museum.id} className="bg-white p-3 rounded-lg mb-3">
-          <Image source={{ uri: museum.image }} className="h-32 w-full rounded-lg mb-2" />
+          <Image source={{ uri: museum.image }} className="h-40 w-full rounded-lg mb-2"/>
           <Text className="text-black text-lg font-bold">{museum.name}</Text>
           <Text className="text-black">{museum.location}</Text>
           <Text className="text-black text-sm">{museum.description}</Text>
@@ -221,13 +221,15 @@ const LandingPage = () => {
           <Text className="text-grey text-sm">Your bucket list is empty.</Text>
         ) : (
           bucketList.map((museum) => (
-            <View key={museum.id} className="bg-white px-2 mb-3">
-              <View className="flex-row justify-between items-center">
-                <Text className="text-black font-bold">{museum.name}</Text>
-                <TouchableOpacity onPress={() => removeFromBucketList(museum.id)}>
-                  <Icon name="trash" className="text-red" size={20} />
-                </TouchableOpacity>
+            <View key={museum.id} className="bg-white px-2 mb-4 mt-2 rounded-lg flex-row items-center">
+              <Image source={{ uri: museum.image }} className="h-16 w-16 rounded-lg mr-4" />
+              <View className="flex-1">
+                <Text className="text-black text-lg font-bold">{museum.name}</Text>
+                <Text className="text-black text-sm">{museum.description}</Text>
               </View>
+              <TouchableOpacity onPress={() => removeFromBucketList(museum.id)}>
+                <Image source={icons.trash} className="h-6 w-6" />
+              </TouchableOpacity>
             </View>
           ))
         )}

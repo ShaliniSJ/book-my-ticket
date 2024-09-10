@@ -53,7 +53,7 @@ const SignUp = () => {
           </Text>
 
           <Text className="text-6xl text-textPrimary font-bold text-left ml-2">
-            there !
+            There !
           </Text>
 
           <Text className="text-xl font-regular text-left text-grey mt-2 mx-3">
@@ -89,7 +89,7 @@ const SignUp = () => {
           textStyles="text-white"
           isLoading={isSubmitting}
          />
-         <View className="justify-center pt-5 flex-row gap-2">
+         <View className="justify-center py-5 flex-row gap-2">
           <Text className="text-black text-lg font-pregular">Have an account already?</Text>
           <Link className="text-primary text-lg font-semibold text-orange" href="/sign-in">Sign In </Link>
          </View>

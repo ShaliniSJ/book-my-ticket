@@ -2,40 +2,28 @@ import { View, Text, ScrollView, ImageBackground, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomButton from '../components/CustomButton';
 import { router } from 'expo-router';
-import { useFonts } from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 import  MaskedView  from '@react-native-masked-view/masked-view';
-
-// Import your image background
 import images from '../constants/images';
 
 export default function HomeScreen() {
   return (
     <ImageBackground
       source={images.front3} // Replace with your background image
-      resizeMode="cover"
+      resizeMode="stretch"
       style={{ flex: 1 }}
     >
-      <SafeAreaView className="h-full">
-        <ScrollView contentContainerStyle={{ height: '100%', paddingTop: '115%'}}>
-          <View className="flex-1 m-2">
-            <Image
-              source={images.logo7} // Replace with your logo
-              style={{ width: 250, height: 40, alignSelf: 'center', marginBottom: 25, marginLeft: 11}}
-            />
-            {/* App Name Header */}
-                 {/* Logo */}
-              {/* <Image
-              source={images.logo6} // Replace with your logo
-              style={{ width: 150, height: 30, alignSelf: 'center', marginTop: 10}}
-            /> */}
-            <View className="items-center justify-center">
+      <SafeAreaView className="h-full w-full">
+        <ScrollView contentContainerStyle={{ flexGrow: 1}}>
+          <View className='flex-1 justify-end mx-[3%]'>
+            <Image className='w-[70%] h-[5%] self-center' source={images.logo7} resizeMode='stretch'/>
+            <View className="items-center justify-center mt-[3%]">
               <Text className="text-4xl text-textPrimary font-itRegular text-center">
                 DISCOVER THE INCREDIBLE MOMENTS OF 
               </Text>
               <MaskedView
                   maskElement={
-                    <Text className="text-4xl  font-itRegular text-center ">
+                    <Text className="text-4xl font-itRegular text-center ">
                       INDIA
                     </Text>
                   }
@@ -53,16 +41,14 @@ export default function HomeScreen() {
                 </MaskedView>
             </View>
 
-              
-         
-       
-            
+            {/* Logo */}
+            <Image source={images.logo6} resizeMode='contain' className="w-[40%] h-[5%] mt-[2%] self-center"/>
 
             {/* get Started Button */}
             <CustomButton
               title="Let's Get Started"
               handlePress={() => router.push('/sign-in')}
-              containerStyles="from-primary to-secondary m-10 rounded-full"
+              containerStyles="from-primary to-secondary mx-[10%] mt-[3%] mb-[7%] rounded-full"
               textStyles="text-buttonText font-bold text-white"
             />
           </View>
