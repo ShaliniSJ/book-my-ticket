@@ -8,5 +8,9 @@
   "Password": "கடவுச்சொல்",
   "Forgot Password?": "கடவுச்சொல் மறந்துவிட்டீர்களா?",
   "Don't have an account?": "உங்களிடம் கணக்கு இல்லையா?",
-  "Sign Up": "பதிவு செய்ய"
+  "Sign Up": "பதிவு செய்ய",
+  "Error": "பிழை",
+  "Please fill all fields": "அனைத்து புலங்களையும் நிரப்பவும்",
+  "Success": "வெற்றி",
+  "Logged in successfully": "வெற்றிகரமாக உள்நுழைந்துள்ளீர்கள்"
 }

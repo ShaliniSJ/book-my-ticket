@@ -28,14 +28,14 @@ const SignIn = () => {
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {
-      Alert.alert("Error", "Please fill all fields");
+      Alert.alert(t("Error"), t("Please fill all fields"));
       return;
     }
     setIsSubmitting(true);
     try {
       // Mock login functionality
       setIsLoggedIn(true);
-      Alert.alert("Success", "Logged in successfully");
+      Alert.alert(t("Success"), t("Logged in successfully"));
       router.replace("/home");
     } catch (e) {
       Alert.alert("Error", e.message);
