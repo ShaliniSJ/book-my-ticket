@@ -45,12 +45,11 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <ScrollView contentContainerStyle="flex-grow justify-center px-4">
-        <View className="border border-gray-300 rounded-lg bg-white">
+    <SafeAreaView className="flex-1 py-4 bg-white">
+      <ScrollView contentContainerStyle="flex-grow justify-center">
+        <View className="border border-gray-300 w-[35%] ml-2 rounded-lg bg-white">
           <Picker
             selectedValue={language}
-            style={{ height: 40, width: 100 }}
             onValueChange={(itemValue) => changeLanguage(itemValue)} // Call changeLanguage
           >
             <Picker.Item label="English" value="en" />
@@ -58,11 +57,8 @@ const SignIn = () => {
             <Picker.Item label="Hindi" value = "hi" />
           </Picker>
         </View>
-        <Image
-          source={images.logo8}
-          className="w-60 h-20 self-center"
-          resizeMode="contain"
-        />
+        <Image source={images.logo7} className="w-60 h-20 self-center" resizeMode="contain"/>
+        
         <Text className="text-6xl text-orange font-bold text-left ml-2">
           {t("Welcome Back")}
         </Text>
@@ -92,7 +88,7 @@ const SignIn = () => {
           textStyles="text-white"
           isLoading={isSubmitting}
         />
-        <View className="flex-row justify-center pt-5 gap-2">
+        <View className="flex-row justify-center py-5 gap-2">
           <Text className="text-black text-lg">{t("Don't have an account?")}</Text>
           <Link
             className="text-primary text-lg text-orange font-semibold"

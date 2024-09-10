@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator, TextInput } from 'react-native';
 import images from "../../constants/images";
-import museumsData from "../../constants/museum"; // Import museum data
+import museumsData from "../../constants/museum";
+import Icon from 'react-native-vector-icons/FontAwesome';
 import NavBar from '../navigation/NavBar';
 import { useNavigation } from '@react-navigation/native';
 
@@ -60,7 +61,7 @@ const ChatPage = () => {
       }
     ]);
 
-    setMuseumOptions([]); // Clear museum options after selecting one
+    setMuseumOptions([]);
   };
 
   // Handler for sending a text message
@@ -195,7 +196,7 @@ const ChatPage = () => {
   
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex-1 h-full bg-white">
     <View className="flex-1 mt-8 bg-white">
       {isLoading ? (
         // Loading spinner (or loading text)
@@ -206,10 +207,9 @@ const ChatPage = () => {
         ) : (
         <>
           {/* Header Section */}
-          <View className="bg-lgrey mt-[-10]">
-            <TouchableOpacity className='flex-row' onPress={() => navigation.navigate('home')}>
-              <Image className='mt-2' source={images.arrow1} resizeMode="contain" style={{ width: 40, height: 30}}/> 
-              <Text className="text-black text-2xl font-bold ml-1 py-3">C<Text className='text-orange'>hatBot</Text></Text> 
+          <View className="bg-lgrey">
+            <TouchableOpacity className='mx-2 my-[2%]' onPress={() => navigation.navigate('home')}>
+              <Icon name='arrow-left' size={18}> <Text className="text-black text-buttonText text-2xl font-bold">ChatBot</Text></Icon>
             </TouchableOpacity>
           </View>
 

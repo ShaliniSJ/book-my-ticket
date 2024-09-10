@@ -98,7 +98,7 @@ const ProfilePage = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <NavBar />
+      <NavBar/>
     </SafeAreaView>
   );
 };
