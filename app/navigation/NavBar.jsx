@@ -39,6 +39,10 @@ const NavBar = () => {
         <Icon name="envelope" size={20} color="#333" />
         <Text style={styles.buttonText}>Chat</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('chatpage')}>
+        <Icon name="envelope" size={20} color="#333" />
+        <Text style={styles.buttonText}>Chat page</Text>
+      </TouchableOpacity>
       <View style={styles.dropdownContainer}>
         <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
           <Icon name="language" size={20} color="#333" />
