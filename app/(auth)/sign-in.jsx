@@ -34,7 +34,7 @@ const SignIn = () => {
     }
     setIsSubmitting(true);
     try {
-      // Use the signIn function from Supabase~
+      // Use the signIn function from Supabase
       const result = await signIn(form.email, form.password);
       if (result.error) {
         Alert.alert("Error", result.error.message);

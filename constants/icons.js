@@ -15,6 +15,8 @@ import heart_outline from "../assets/icons/heart_outline.png";
 import heart_coloured from "../assets/icons/heart_coloured.png";
 import trash from "../assets/icons/delete.png";
 import chats from "../assets/icons/chat.png";
+import translate from "../assets/icons/translation.png";
+import museum from "../assets/icons/museum.png"; 
 export default icons= {
   play,
   bookmark,
@@ -32,5 +34,7 @@ export default icons= {
   heart_outline,
   heart_coloured,
   trash,
-  chats
+  chats,
+  translate,
+  museum
 };
