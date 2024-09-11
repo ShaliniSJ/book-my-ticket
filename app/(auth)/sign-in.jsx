@@ -34,13 +34,7 @@ const SignIn = () => {
     }
     setIsSubmitting(true);
     try {
-<<<<<<< HEAD
-      // Mock login functionality
-      setIsLoggedIn(true);
-      Alert.alert(t("Success"), t("Logged in successfully"));
-      router.replace("/home");
-=======
-      // Use the signIn function from Supabase
+      // Use the signIn function from Supabase~
       const result = await signIn(form.email, form.password);
       if (result.error) {
         Alert.alert("Error", result.error.message);
@@ -49,7 +43,6 @@ const SignIn = () => {
         Alert.alert("Success", "Logged in successfully");
         router.replace("/home");
       }
->>>>>>> b8a210c231c9a756a1e027771f855cec4291a3af
     } catch (e) {
       Alert.alert("Error", e.message);
     } finally {
