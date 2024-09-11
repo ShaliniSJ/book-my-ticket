@@ -35,13 +35,13 @@ const NavBar = () => {
         <Icon name="user" size={20} color="#333" />
         <Text style={styles.buttonText}>Profile</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ticket')}>
+        <Icon name="envelope" size={20} color="#333" />
+        <Text style={styles.buttonText}>Ticket</Text>
+      </TouchableOpacity> */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('chat')}>
         <Icon name="envelope" size={20} color="#333" />
         <Text style={styles.buttonText}>Chat</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('chatpage')}>
-        <Icon name="envelope" size={20} color="#333" />
-        <Text style={styles.buttonText}>Chat page</Text>
       </TouchableOpacity>
       <View style={styles.dropdownContainer}>
         <TouchableOpacity style={styles.button} onPress={toggleDropdown}>

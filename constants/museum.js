@@ -6,7 +6,7 @@ export default museumsData = [
     description: "A great place to learn about art and history...",
     category: "Art",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTllvBIeB9gxw1IissvAozsUm2HoH22mkuzHg&s",  
     duration: "2-3 hours",
     ticketPrice: {
       adult: "₹200",

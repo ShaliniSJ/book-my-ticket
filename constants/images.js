@@ -14,6 +14,7 @@ import arrow1 from "../assets/images/arrow1.png"
 import chatbot from "../assets/images/chatbot.jpg"
 import user_avatar from "../assets/images/user_avatar.png"
 import vid1 from "../assets/images/bgvid.gif"
+import ticket from  "../assets/images/ticket.jpg"
 
 
 export default images={
@@ -32,5 +33,6 @@ export default images={
     arrow1,
     chatbot,
     user_avatar,
-    vid1
+    vid1,
+    ticket
 }

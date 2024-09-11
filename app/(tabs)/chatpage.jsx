@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, Image, ActivityIndicator } fr
 import images from "../../constants/images";
 import museumData from "../../constants/museum";
 
-const ChatPage = () => {
+const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -157,4 +157,4 @@ const ChatPage = () => {
   );
 };
 
-export default ChatPage;
+export default Chat;

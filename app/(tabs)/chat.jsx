@@ -82,6 +82,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'What about going to some place which amuses your brain?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'yeah i would be happy to go. is there such place?':
@@ -89,6 +90,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Yes, I would like to suggest places like Museums, Science City or Planetarium which would perfectly suit your requirement.' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'well done. i will visit museum then. but i don\'t know where is it and how to book tickets?':
@@ -96,6 +98,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Don\'t worry, I will take care. Just answer a few follow-up questions. Where are you located?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'i am at anna nagar, chennai':
@@ -103,6 +106,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Anna Nagar is close to many exciting museums actually. On which date would you like to visit the museum?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'i would like to visit tomorrow.':
@@ -110,6 +114,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Tomorrow it\'s Tuesday. Mostly all Museums in Chennai will be closed because of weekly holiday. Would you like to reconsider the dates or should I find museums which are open tomorrow?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'oh! okay then i would like to go on wednesday i.e. day after tomorrow.':
@@ -117,6 +122,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Great Choice. I am marking the date as 11th September (Wednesday). By the way, what timings would you like to spend at the place?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'i would like to spend half a day. i will go to the place by morning and i want to leave the place by afternoon 3 pm.':
@@ -124,6 +130,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Great choice, I will note the timings as 10 am to 3 pm as 10 am is the opening time for most of the museums and science centres. Is Egmore convenient for you to reach?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'egmore? no! egmore is little far for me.':
@@ -131,6 +138,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Okay, Is Guindy okay for you?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'yeah! guindy is near to me i will be able to reach there easily.':
@@ -138,6 +146,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Great choice. Guindy Birla Planetarium would suit you the best. There are three different ticket systems there:\n1. Gold Ticket - Rs 100 per head for adults, Rs 75 for children below 12 years (Includes Entry, 3D show, Science Park, Planetarium Show, Science Exhibitions, Science Games)\n2. Silver Ticket - Rs 75 per head for adults, Rs 50 for children below 12 years (Includes Entry, 3D show, Science Park, Science Exhibitions, Science Games)\n3. Bronze Ticket - Rs 50 per head for adults, Rs 25 for children below 12 years (Includes Entry, Science Park, Science Exhibitions, Science Games)\nWhat type of ticket would you like to buy?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'i would like to buy the golden ticket':
@@ -145,6 +154,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Great choice. How many people are accompanying you?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case '3 adults and 1 child':
@@ -152,6 +162,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Great. Could you mention their names, gender and age?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'rahul - male, 25; vimala - female, 21; vinitha - female, 52; raju - male, 11':
@@ -159,6 +170,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Thanks for sharing. All details stored. Would you like to pay now or pay at the venue?' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'i will pay now using upi':
@@ -166,6 +178,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'Sure, I will now navigate to payment page.\n<PAYMENT PAGE POP UPS - USER PAYS USING UPI>\nPayment successful. Please download the tickets <DOWNLOADABLE PDF WITH QR>' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'any instructions to follow?':
@@ -173,6 +186,7 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'All instructions are specified along with the ticket. But I will tell them again here for better convenience.\n1. Please reach the place by 10 am for full utilization of time.\n2. 3D show is scheduled between 11 am to 11.30 am\n3. Planetarium show is scheduled between 1 pm to 2 pm.\n4. Make sure you take valid Government ID for all the members along with the ticket QR either in phone or in printed hard copy\n5. Outside food and water bottles are allowed. But make sure you maintain cleanliness. We also have a canteen where visitors can buy their required snacks, water bottles and food items.\nAny other doubts, please feel free to ask me. Note your convo ID - "234781" if in case you want to continue after some time with the same context' },
           ]);
+          setOptionsVisible(false);
           break;
   
         case 'good! thanks...':
@@ -180,22 +194,25 @@ const ChatPage = () => {
             ...prevMessages,
             { sender: 'system', text: 'You are welcome.' },
           ]);
+          setOptionsVisible(false);
           break;
   
         default:
           setMessages((prevMessages) => [
             ...prevMessages,
-            { sender: 'system', text: `I'm sorry, I didn't understand that. Please try selecting one of the options or rephrase your query.` },
+            { sender: 'system', text: `I didn’t understand that. Please choose an option or rephrase your query.` },
           ]);
-          break;
-      }
+          setOptionsVisible(true); // Show options again
+        break;
+    }
   
-      setInputValue(''); // Clear input field
+    setInputValue('');  // Clear input field
     }
   };
   
 
   return (
+    <View className="flex-1 h-full bg-white">
     <ScrollView className="flex-1 h-full bg-white">
     <View className="flex-1 mt-8 bg-white">
       {isLoading ? (
@@ -222,19 +239,19 @@ const ChatPage = () => {
               >
                 {/* Avatar and Message */}
                 {message.sender === 'system' && (
-                  <View className="flex-row">
-                    <Image
-                      source={images.chatbot} // Replace with actual system avatar
-                      className="w-10 h-10 rounded-full mr-2"
-                    />
-                    <View className="p-3 rounded-lg bg-gray-300">
-                      <Text className="text-black">{message.text}</Text>
-                    </View>
+                  <View className="flex-row mr-10">
+                  <Image
+                    source={images.chatbot} // Replace with actual system avatar
+                    className="w-10 h-10 rounded-full mr-2"
+                  />
+                  <View className="p-2 rounded-lg bg-gray-300 max-w-[90%]">
+                    <Text className="text-black">{message.text}</Text>
                   </View>
+                </View>
                 )}
                 {message.sender === 'user' && (
                   <View className="flex-row">
-                    <View className="p-3 rounded-lg bg-orange">
+                    <View className="p-2 rounded-lg bg-orange">
                       <Text className="text-white">{message.text}</Text>
                     </View>
                     <Image
@@ -264,7 +281,7 @@ const ChatPage = () => {
           )}
 
           {/* Options (shown only when they are visible) */}
-          {optionsVisible && museumOptions.length === 0 ? (
+          {optionsVisible && museumOptions.length === 0 && (
             <View className="mt-4 mx-4">
               <Text className="text-center text-lg mb-2">How can I help you?</Text>
               {['Museums near me', 'Book a ticket', 'Know about a museum', 'Popular attractions'].map(option => (
@@ -277,9 +294,13 @@ const ChatPage = () => {
                 </TouchableOpacity>
               ))}
             </View>
-          ) : (
-            // Text Input box when options are not visible
-            <View className="absolute bottom-12 left-0 right-0 p-4 bg-white border-t border-gray-300">
+          )}
+        </>
+      )}
+    </View>
+    </ScrollView>
+           
+            <View className="left-0 right-0 p-4 bg-white border-t border-gray-300">
               <View className="flex-row">
                 <TextInput
                   value={inputValue}
@@ -295,12 +316,9 @@ const ChatPage = () => {
                 </TouchableOpacity>
               </View>
             </View>
-          )}
-        </>
-      )}
+          
       <NavBar/>
-    </View>
-    </ScrollView>
+      </View>
   );
 };
 
