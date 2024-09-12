@@ -11,7 +11,7 @@ const TabIcon=({icon,color,name,focused})=>{
       resizeMode='contain'
       tintColor={color}
       className="w-6 h-6"/>
-      <Text className={`${focused ? 'font-pbold' : 'font-pregular'} text-xs`}
+      <Text className={`${focused ? 'font-bold' : 'font-regular'} text-xs`}
       style={{color:color}}>
           {name}
       </Text>
@@ -60,20 +60,7 @@ const Adminlayout = () => {
                />
         )
       }} />
-      <Tabs.Screen name="create"
-      options={{
-        title:'Create',
-        headerShown:false,
-        tabBarIcon:({color,focused})=>(
-               <TabIcon
-               icon={icons.plus}
-               color={color}
-               name="Create"
-               focused={focused}
-               />
-        )
-      }} />
-      <Tabs.Screen name="museum"
+      <Tabs.Screen name="museumlist"
       options={{
         title:'Museum',
         headerShown:false,

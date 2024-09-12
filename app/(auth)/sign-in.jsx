@@ -8,7 +8,7 @@ import images from "../../constants/images";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../components/CustomButton";
 import FormField from "../../components/FormField";
-import { signIn } from "../../api/auth";  // Import the signIn function
+import { signIn } from "../../api/auth"; // Import the signIn function
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -37,11 +37,15 @@ const SignIn = () => {
       // Use the signIn function from Supabase
       const result = await signIn(form.email, form.password);
       if (result.error) {
-        Alert.alert("Error", result.error.message);
+        Alert.alert("Error", result.error);
       } else {
         setIsLoggedIn(true);
+        console.log(result.data);
         Alert.alert("Success", "Logged in successfully");
-        router.replace("/home");
+        if (result.data[0].is_admin) {
+          router.replace("/dashboard");
+        }
+        else router.replace("/home");
       }
     } catch (e) {
       Alert.alert("Error", e.message);
@@ -63,14 +67,20 @@ const SignIn = () => {
             <Picker.Item label="Hindi" value="hi" />
           </Picker>
         </View>
-        <Image source={images.logo7} className="w-60 h-20 self-center" resizeMode="contain" />
+        <Image
+          source={images.logo7}
+          className="w-60 h-20 self-center"
+          resizeMode="contain"
+        />
 
         <Text className="text-6xl text-orange font-bold text-left ml-2">
           {t("Welcome Back")}
         </Text>
 
         <Text className="text-xl font-regular text-left text-grey mt-2 mx-3">
-          {t("Sign in now to manage your tickets and receive instant updates on all your museum visits")}
+          {t(
+            "Sign in now to manage your tickets and receive instant updates on all your museum visits"
+          )}
         </Text>
 
         <FormField
@@ -94,7 +104,9 @@ const SignIn = () => {
           isLoading={isSubmitting}
         />
         <View className="flex-row justify-center py-5 gap-2">
-          <Text className="text-black text-lg">{t("Don't have an account?")}</Text>
+          <Text className="text-black text-lg">
+            {t("Don't have an account?")}
+          </Text>
           <Link
             className="text-primary text-lg text-orange font-semibold"
             href="/sign-up"
