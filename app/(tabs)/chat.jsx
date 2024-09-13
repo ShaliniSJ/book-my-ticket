@@ -780,9 +780,7 @@ return (
                 onPress={() => navigation.navigate("home")}
               >
                 <Icon name="arrow-left" color={"white"} size={18}>
-                  <Text className="text-white text-buttonText text-2xl font-bold">
-                    ChatBot
-                  </Text>
+                  <Text className="text-white text-buttonText text-2xl font-bold"> ChatBot</Text>
                 </Icon>
               </TouchableOpacity>
             </View>
