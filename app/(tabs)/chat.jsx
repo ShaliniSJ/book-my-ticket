@@ -758,187 +758,151 @@ const ChatPage = () => {
     }
   };
 
-  return (
-    <View className="flex-1 h-full bg-white">
-      <ScrollView className="flex-1 h-full bg-white">
-        <View className="flex-1 mt-7 bg-white">
-          {isLoading ? (
-            <View className="flex-1 justify-center items-center">
-              <Image
-                source={images.logo7}
-                resizeMode="contain"
-                style={{ width: 300, height: 40 }}
-              />
-              <ActivityIndicator size="large" color="#000" />
-            </View>
-          ) : (
-            <>
-              {/* Header Section */}
-              <View className="bg-orange">
-                <TouchableOpacity
-                  className="mx-2 my-[2%]"
-                  onPress={() => navigation.navigate("home")}
-                >
-                  <Icon name="arrow-left" color={"white"} size={18}>
-                    {" "}
-                    <Text className="text-white text-buttonText text-2xl font-bold">
-                      ChatBot
-                    </Text>
-                  </Icon>
-                </TouchableOpacity>
-              </View>
+return (
+  <View className="flex-1 h-full bg-white">
     <ScrollView className="flex-1 h-full bg-white">
-    <View className="flex-1 mt-8 bg-white">
-      {isLoading ? (
-        // Loading spinner (or loading text)
-        <View className="flex-1 justify-center items-center">
-          <Image source={images.logo7} resizeMode="contain" style={{ width: 300, height: 40 }}/>
-          <ActivityIndicator size="large" color="#000"/>
-        </View>
-        ) : (
-        <>
-          {/* Header Section */}
-          <View className="bg-orange">
-            <TouchableOpacity className='mx-2 my-[2%]' onPress={() => navigation.navigate('home')}>
-              <Icon name='arrow-left' size={18} color={"white"}> <Text className="text-white text-buttonText text-2xl font-bold"> ChatBot</Text></Icon>
-            </TouchableOpacity>
+      <View className="flex-1 mt-7 bg-white">
+        {isLoading ? (
+          <View className="flex-1 justify-center items-center">
+            <Image
+              source={images.logo7}
+              resizeMode="contain"
+              style={{ width: 300, height: 40 }}
+            />
+            <ActivityIndicator size="large" color="#000" />
           </View>
-
-              {/* Chat messages */}
-              <ScrollView className="flex-1 my-3 mx-2">
-                {messages.map((message, index) => (
-                  <View
-                    key={index}
-                    className={`flex-row ${
-                      message.sender === "user"
-                        ? "justify-end"
-                        : "justify-start"
-                    } my-2`}
-                  >
-                    {message.sender === "system" && (
-                      <View className="flex-row mr-10">
-                        <Image
-                          source={images.chatbot}
-                          className="w-10 h-10 rounded-full mr-2"
-                        />
-
-                        <View className="p-2 rounded-lg bg-gray-300 max-w-[90%]">
-                          <Text className="text-black">{message.text}</Text>
-                        </View>
-                      </View>
-                    )}
-                    {message.sender === "user" && (
-                      <View className="flex-row">
-                        <View className="p-2 rounded-lg bg-orange">
-                          <Text className="text-white">{message.text}</Text>
-                        </View>
-                        <Image
-                          source={images.user_avatar}
-                          className="w-10 h-10 rounded-full ml-2"
-                        />
-                      </View>
-                    )}
-                  </View>
-                ))}
-              </ScrollView>
-            </>
-          )}
-          {showPayNowButton && (
-            <View className="items-center my-4">
+        ) : (
+          <>
+            {/* Header Section */}
+            <View className="bg-orange">
               <TouchableOpacity
-                className="w-[70%] bg-orange p-3 rounded-lg"
-                onPress={handlePayment}
+                className="mx-2 my-[2%]"
+                onPress={() => navigation.navigate("home")}
               >
-                <Text className="text-white text-center text-lg">Pay Now</Text>
+                <Icon name="arrow-left" color={"white"} size={18}>
+                  <Text className="text-white text-buttonText text-2xl font-bold">
+                    ChatBot
+                  </Text>
+                </Icon>
               </TouchableOpacity>
-          {/* Chat messages */}
-          <ScrollView className="flex-1 my-3 mx-2">
-            {messages.map((message, index) => (
-              <View
-                key={index}
-                className={`flex-row ${message.sender === 'user' ? 'justify-end' : 'justify-start'} my-2`}
-              >
-                {/* Avatar and Message */}
-                {message.sender === 'system' && (
-                  <View className="flex-row mr-10">
-                  <Image
-                    source={images.chatbot} // Replace with actual system avatar
-                    className="w-10 h-10 rounded-full mr-2"
-                  />
-                  <View className="p-2 rounded-lg bg-gray-300 max-w-[90%]">
-                    <Text className="text-black">{message.text}</Text>
-                  </View>
-                </View>
-                )}
-                {message.sender === 'user' && (
-                  <View className="flex-row">
-                    <View className="ml-2 p-2 rounded-lg bg-orange">
-                      <Text className="text-white">{message.text}</Text>
-                    </View>
-                    <Image
-                      source={images.user_avatar} // Replace with actual user avatar
-                      className="w-10 h-10 rounded-full ml-2"
-                    />
-                  </View>
-                )}
-              </View>
-            ))}
-          </ScrollView>
+            </View>
 
-          {/* Museum options (if museums are selected) */}
-          {museumOptions.length > 0 && (
-            <View className="mt-4 mx-4">
-              <Text className="text-center text-lg mb-2">Select a museum to see details:</Text>
-              {museumOptions.map((museumName, index) => (
-                <TouchableOpacity
+            {/* Chat messages */}
+            <ScrollView className="flex-1 my-3 mx-2">
+              {messages.map((message, index) => (
+                <View
                   key={index}
-                  className="p-4 mb-2 bg-teal-500 rounded-lg"
-                  onPress={() => handleMuseumClick(museumName)}
+                  className={`flex-row ${
+                    message.sender === "user" ? "justify-end" : "justify-start"
+                  } my-2`}
                 >
-                  <Text className="text-white text-center">{museumName}</Text>
-                </TouchableOpacity>
+                  {/* Avatar and Message */}
+                  {message.sender === "system" && (
+                    <View className="flex-row mr-10">
+                      <Image
+                        source={images.chatbot} // Replace with actual system avatar
+                        className="w-10 h-10 rounded-full mr-2"
+                      />
+                      <View className="p-2 rounded-lg bg-gray-300 max-w-[90%]">
+                        <Text className="text-black">{message.text}</Text>
+                      </View>
+                    </View>
+                  )}
+                  {message.sender === "user" && (
+                    <View className="flex-row">
+                      <View className="ml-2 p-2 rounded-lg bg-orange">
+                        <Text className="text-white">{message.text}</Text>
+                      </View>
+                      <Image
+                        source={images.user_avatar} // Replace with actual user avatar
+                        className="w-10 h-10 rounded-full ml-2"
+                      />
+                    </View>
+                  )}
+                </View>
               ))}
-            </View>
-          )}
+            </ScrollView>
 
-          {/* Options (shown only when they are visible) */}
-          {optionsVisible && museumOptions.length === 0 && (
-            <View className="mt-4 mx-4">
-              <Text className="text-center text-lg mb-2">How can I help you?</Text>
-              {['Museums near me', 'Book a ticket', 'Know about a museum', 'Popular attractions'].map(option => (
+            {/* Museum options (if museums are selected) */}
+            {museumOptions.length > 0 && (
+              <View className="mt-4 mx-4">
+                <Text className="text-center text-lg mb-2">
+                  Select a museum to see details:
+                </Text>
+                {museumOptions.map((museumName, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    className="p-4 mb-2 bg-teal-500 rounded-lg"
+                    onPress={() => handleMuseumClick(museumName)}
+                  >
+                    <Text className="text-white text-center">
+                      {museumName}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
+
+            {/* Options (shown only when they are visible) */}
+            {optionsVisible && museumOptions.length === 0 && (
+              <View className="mt-4 mx-4">
+                <Text className="text-center text-lg mb-2">
+                  How can I help you?
+                </Text>
+                {[
+                  "Museums near me",
+                  "Book a ticket",
+                  "Know about a museum",
+                  "Popular attractions",
+                ].map((option) => (
+                  <TouchableOpacity
+                    key={option}
+                    className="p-4 mb-2 bg-orange rounded-lg"
+                    onPress={() => handleOptionPress(option)}
+                  >
+                    <Text className="text-white text-center">{option}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
+
+            {/* Pay Now Button */}
+            {showPayNowButton && (
+              <View className="items-center my-4">
                 <TouchableOpacity
-                  key={option}
-                  className="p-4 mb-2 bg-orange rounded-lg"
-                  onPress={() => handleOptionPress(option)}
+                  className="w-[70%] bg-orange p-3 rounded-lg"
+                  onPress={handlePayment}
                 >
-                  <Text className="text-white text-center">{option}</Text>
+                  <Text className="text-white text-center text-lg">
+                    Pay Now
+                  </Text>
                 </TouchableOpacity>
-              ))}
-            </View>
-          )}
-        </View>
-      </ScrollView>
-
-      <View className="left-0 right-0 p-4 bg-white border-t border-gray-300">
-        <View className="flex-row">
-          <TextInput
-            value={inputValue}
-            onChangeText={setInputValue}
-            placeholder="Type a message..."
-            className="flex-1 p-2 border border-gray-300 rounded-lg"
-          />
-          <TouchableOpacity
-            onPress={handleSendMessage}
-            className="ml-2 p-2 bg-orange rounded-lg justify-center items-center"
-          >
-            <Text className="text-white">Send</Text>
-          </TouchableOpacity>
-        </View>
+              </View>
+            )}
+          </>
+        )}
       </View>
+    </ScrollView>
 
-      <NavBar />
+    <View className="left-0 right-0 p-4 bg-white border-t border-gray-300">
+      <View className="flex-row">
+        <TextInput
+          value={inputValue}
+          onChangeText={setInputValue}
+          placeholder="Type a message..."
+          className="flex-1 p-2 border border-gray-300 rounded-lg"
+        />
+        <TouchableOpacity
+          onPress={handleSendMessage}
+          className="ml-2 p-2 bg-orange rounded-lg justify-center items-center"
+        >
+          <Text className="text-white">Send</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  );
-};
 
+    <NavBar />
+  </View>
+);  
+}
 export default ChatPage;
