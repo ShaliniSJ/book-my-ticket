@@ -65,7 +65,7 @@ const SignIn = () => {
         </View>
         <Image source={images.logo7} className="w-60 h-20 self-center" resizeMode="contain" />
 
-        <Text className="text-6xl text-orange font-bold text-left ml-2">
+        <Text className="text-2xl text-orange font-bold text-left ml-2">
           {t("Welcome Back")}
         </Text>
 

@@ -23,6 +23,8 @@ const NavBar = () => {
   const selectLanguage = (language) => {
     setSelectedLanguage(language);
     setDropdownVisible(false);
+    // Update language in navigation params
+    navigation.setParams({ selectedLanguage: language });
   };
 
   return (
