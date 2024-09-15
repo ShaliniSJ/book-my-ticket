@@ -795,6 +795,7 @@ return (
                   } my-2`}
                 >
                   {/* Avatar and Message */}
+                  <View className="flex-row mr-20">
                   {message.sender === "system" && (
                     <View className="flex-row mr-10">
                       <Image
@@ -808,7 +809,7 @@ return (
                   )}
                   {message.sender === "user" && (
                     <View className="flex-row">
-                      <View className="ml-2 p-2 rounded-lg bg-orange">
+                      <View className="ml-12 p-2 rounded-lg bg-orange">
                         <Text className="text-white">{message.text}</Text>
                       </View>
                       <Image
@@ -817,6 +818,7 @@ return (
                       />
                     </View>
                   )}
+                  </View>
                 </View>
               ))}
             </ScrollView>
