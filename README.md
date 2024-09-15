@@ -1,50 +1,37 @@
-# Welcome to your Expo app 👋
+# Book My Ticket
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Book My Ticket** is a mobile application that allows users to browse events, select seats, and book tickets online. The platform is designed to streamline the ticket booking process, offering an easy-to-navigate interface and seamless payment integration.
 
-## Get started
+![Book My Ticket](./assets/readme-image/get_started.jpg)
 
-1. Install dependencies
+## Features
 
+- **Multilingual**: Users can explore and book tickets for various museum events, ensuring accessibility across multiple languages for a diverse audience.
+  ![Browse Events](./assets/readme-image/chatbot.jpg)
+
+- **User Authentication**: Secure login and registration functionality.
+  ![Login Screen](./assets/readme-image/signin.jpg)
+
+- **Payment Gateway DeepLinking**: Supports secure payment methods via Deep linking upi apps for easy ticket purchase.
+  ![Payment Gateway](./assets/readme-image/payment.jpg)
+
+- **Analytics**: Admins can add, edit, and manage events, seat arrangements, and ticket prices.
+  ![Admin Panel](./assets/readme-image/admin.jpg)
+
+- **Exploring Events**: Users can browse through available events in museums, view event details, and select tickets. After booking, they can access their booking history and download e-tickets for easy reference.
+  ![Booking History](./assets/readme-image/home.jpg)
+
+## Technologies Used
+
+- **Frontend**: React Native, Tailwind CSS
+- **Backend**: Flask
+- **Database**: Supabase
+- **Payment Integration**: Deep Linking UPI apps
+- **Authentication**: Custom session token authentication
+- **Deployment**: Vercel, Supabase, Render
+
+## Installation
+
+1. Clone the repository:
    ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   git clone https://github.com/ShaliniSJ/book-my-ticket.git
