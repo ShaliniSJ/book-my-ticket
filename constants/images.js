@@ -16,7 +16,7 @@ import user_avatar from "../assets/images/user_avatar.png"
 import vid1 from "../assets/images/bgvid.gif"
 import ticket from  "../assets/images/ticket.jpg"
 import adminPage from "../assets/images/adminPage.png"
-
+import qrcode from "../assets/images/qrcode.png"
 
 export default images={
     front,
@@ -36,5 +36,6 @@ export default images={
     user_avatar,
     vid1,
     ticket,
-    adminPage
+    adminPage,
+    qrcode
 }

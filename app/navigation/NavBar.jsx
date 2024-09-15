@@ -41,7 +41,7 @@ const NavBar = () => {
         <Icon name="envelope" size={20} color="#333" />
         <Text style={styles.buttonText}>Ticket</Text>
       </TouchableOpacity> */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('chat')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ticket')}>
         <Icon name="envelope" size={20} color="#333" />
         <Text style={styles.buttonText}>Chat</Text>
       </TouchableOpacity>
