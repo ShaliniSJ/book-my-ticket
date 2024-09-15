@@ -10,7 +10,7 @@
   ![Browse Events](./assets/readme-image/chatbot.jpg)
 
 - **User Authentication**: Secure login and registration functionality.
-  ![Login Screen](./assets/readme-image/signin.jpg)
+  ![Login Screen](./assets/readme-image/sigin.jpg)
 
 - **Payment Gateway DeepLinking**: Supports secure payment methods via Deep linking upi apps for easy ticket purchase.
   ![Payment Gateway](./assets/readme-image/payment.jpg)
