@@ -15,6 +15,7 @@ import chatbot from "../assets/images/chatbot.jpg"
 import user_avatar from "../assets/images/user_avatar.png"
 import vid1 from "../assets/images/bgvid.gif"
 import ticket from  "../assets/images/ticket.jpg"
+import adminPage from "../assets/images/adminPage.png"
 
 
 export default images={
@@ -34,5 +35,6 @@ export default images={
     chatbot,
     user_avatar,
     vid1,
-    ticket
+    ticket,
+    adminPage
 }
