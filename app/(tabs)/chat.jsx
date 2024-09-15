@@ -760,6 +760,15 @@ const ChatPage = () => {
 
 return (
   <View className="flex-1 h-full bg-white">
+    {/* Header Section */}
+    <View className="bg-orange mt-8">
+      <TouchableOpacity className="mx-2 my-[2%]" onPress={() => navigation.navigate("home")}>
+        <Icon name="arrow-left" color={"white"} size={18}>
+          <Text className="text-white text-buttonText text-2xl font-bold"> ChatBot</Text>
+        </Icon>
+      </TouchableOpacity>
+    </View>
+
     <ScrollView className="flex-1 h-full bg-white">
       <View className="flex-1 mt-7 bg-white">
         {isLoading ? (
@@ -773,43 +782,30 @@ return (
           </View>
         ) : (
           <>
-            {/* Header Section */}
-            <View className="bg-orange">
-              <TouchableOpacity
-                className="mx-2 my-[2%]"
-                onPress={() => navigation.navigate("home")}
-              >
-                <Icon name="arrow-left" color={"white"} size={18}>
-                  <Text className="text-white text-buttonText text-2xl font-bold"> ChatBot</Text>
-                </Icon>
-              </TouchableOpacity>
-            </View>
-
             {/* Chat messages */}
-            <ScrollView className="flex-1 my-3 mx-2">
+            <ScrollView className="flex-1 mx-2">
               {messages.map((message, index) => (
                 <View
                   key={index}
                   className={`flex-row ${
                     message.sender === "user" ? "justify-end" : "justify-start"
-                  } my-2`}
+                  } mb-2`}
                 >
                   {/* Avatar and Message */}
-                  <View className="flex-row mr-20">
                   {message.sender === "system" && (
                     <View className="flex-row mr-10">
                       <Image
                         source={images.chatbot} // Replace with actual system avatar
                         className="w-10 h-10 rounded-full mr-2"
                       />
-                      <View className="p-2 rounded-lg bg-gray-300 max-w-[90%]">
+                      <View className="p-2 rounded-lg bg-gray-300 max-w-[80%]">
                         <Text className="text-black">{message.text}</Text>
                       </View>
                     </View>
                   )}
                   {message.sender === "user" && (
                     <View className="flex-row">
-                      <View className="ml-12 p-2 rounded-lg bg-orange">
+                      <View className="ml-2 p-2 rounded-lg bg-orange max-w-[85%]">
                         <Text className="text-white">{message.text}</Text>
                       </View>
                       <Image
@@ -818,7 +814,6 @@ return (
                       />
                     </View>
                   )}
-                  </View>
                 </View>
               ))}
             </ScrollView>
